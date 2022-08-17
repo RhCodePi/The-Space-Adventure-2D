@@ -12,18 +12,13 @@ namespace rhcodepi
         [SerializeField] GameObject gameOverUI;
         [SerializeField] Text gameOverScoreTxt;
         [SerializeField] Text gameOverCoinTxt;
-        
+        int score;
+        int coinCount;
         // Start is called before the first frame update
         void Start()
         {
             gameOverUI.SetActive(false);
             inGameUI.SetActive(true);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         public void MainMenu()
@@ -40,11 +35,59 @@ namespace rhcodepi
 
         public void SetGameOver()
         {
+            
             inGameUI.SetActive(false);
+            gameOverScoreTxt.text = GetComponent<Score>().gameOverScoreTxt.text; 
             gameOverCoinTxt.text = GetComponent<Score>().gameOverCoinTxt.text;
-            gameOverScoreTxt.text = GetComponent<Score>().gameOverScoreTxt.text;
+
+            string[] subPuan = gameOverScoreTxt.text.Split(' ');
+            string[] subCoin = gameOverCoinTxt.text.Split(' ');
+            int result = 0;
+            foreach (var item in subPuan)
+            {
+                if(int.TryParse(item, out result))
+                    score = int.Parse(item);
+            }
+            foreach (var item in subCoin)
+            {
+                if(int.TryParse(item, out result))
+                    coinCount = int.Parse(item);
+            }
+            CalculateHighScoreEachDifficult(score, coinCount);
             GetComponent<Score>()._isGameOver = true;
             gameOverUI.SetActive(true);
+        }
+        public void CalculateHighScoreEachDifficult(int score, int coinCount)
+        {
+            if (SaveData.GetSaveEasy() == 1)
+            {
+                int highScore = SaveData.GetSaveEasyPuan();
+                int highCoin = SaveData.GetSaveEasyCoin();
+                if(score > highScore)
+                    SaveData.SetSaveEasyPuan(score);
+                if(coinCount > highCoin)
+                    SaveData.SetSaveEasyCoin(coinCount);
+            }
+            
+            if (SaveData.GetSaveNormal() == 1)
+            {
+                int highScore = SaveData.GetSaveNormalPuan();
+                int highCoin = SaveData.GetSaveNormalCoin();
+                if(score > highScore)
+                    SaveData.SetSaveNormalPuan(score);
+                if(coinCount > highCoin)
+                    SaveData.SetSaveNormalCoin(coinCount);
+            }
+            
+            if (SaveData.GetSaveHard() == 1)
+            {
+                int highScore = SaveData.GetSaveHardPuan();
+                int highCoin = SaveData.GetSaveHardCoin();
+                if(score > highScore)
+                    SaveData.SetSaveHardPuan(score);
+                if(coinCount > highCoin)
+                    SaveData.SetSaveHardCoin(coinCount);
+            }
         }
     }
 }

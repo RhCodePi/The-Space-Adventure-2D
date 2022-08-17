@@ -84,7 +84,7 @@ namespace rhcodepi
         #region SaveCoin
         public static void SetSaveEasyCoin(int value)
         {
-            PlayerPrefs.SetInt(easyPuan, value);
+            PlayerPrefs.SetInt(easyCoin, value);
         }
         public static int GetSaveEasyCoin()
         {
@@ -100,7 +100,7 @@ namespace rhcodepi
             return PlayerPrefs.GetInt(normalCoin);
         }
 
-        public static void SetSaveHardPCoin(int value)
+        public static void SetSaveHardCoin(int value)
         {
             PlayerPrefs.SetInt(hardCoin, value);
         }

@@ -11,12 +11,6 @@ namespace rhcodepi
         {
             ScreenScaleCal();
         }
-
-        void Update()
-        {
-
-        }
-
         void ScreenScaleCal()
         {
             Vector2 tempScale = transform.localScale;
