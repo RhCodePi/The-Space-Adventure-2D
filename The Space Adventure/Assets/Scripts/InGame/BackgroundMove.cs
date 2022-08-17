@@ -12,6 +12,7 @@ namespace rhcodepi
         void Start()
         {
             backgrondPos = transform.position.y;
+            FindObjectOfType<Planets>().SetPlanet(backgrondPos);
         }
 
         // Update is called once per frame
@@ -26,6 +27,7 @@ namespace rhcodepi
         void MoveBackground()
         {
             backgrondPos += (distance * 2);
+            FindObjectOfType<Planets>().SetPlanet(backgrondPos);
             Vector2 newPos = new Vector2(0, backgrondPos);
             transform.position = newPos;
         }

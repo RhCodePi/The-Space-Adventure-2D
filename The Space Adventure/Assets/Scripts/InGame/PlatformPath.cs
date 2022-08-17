@@ -24,12 +24,6 @@ namespace rhcodepi
             height = Camera.main.orthographicSize;
             width = height * Camera.main.aspect; 
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
 
