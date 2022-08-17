@@ -42,7 +42,7 @@ namespace rhcodepi
 
         public void SetGameOver()
         {
-            
+            FindObjectOfType<Sound>().SetGameOverSound();
             inGameUI.SetActive(false);
             gameOverScoreTxt.text = GetComponent<Score>().gameOverScoreTxt.text; 
             gameOverCoinTxt.text = GetComponent<Score>().gameOverCoinTxt.text;

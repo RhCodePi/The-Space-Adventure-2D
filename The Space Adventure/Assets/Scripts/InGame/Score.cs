@@ -39,6 +39,7 @@ namespace rhcodepi
 
         public void CollectCoin()
         {
+            FindObjectOfType<Sound>().SetCoinSound();
             coinCount++;
             coinTxt.text = $"X {coinCount}";
         }

@@ -120,6 +120,7 @@ namespace rhcodepi
         {
             if (jumpCount < jumpBound)
             {
+                FindObjectOfType<Sound>().SetJumpSound();
                 playerRb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 playerAnim.SetBool("jump", true);
                 FindObjectOfType<JumpSlider>().SetJumpSlider(jumpBound, jumpCount);
