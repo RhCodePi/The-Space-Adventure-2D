@@ -42,9 +42,11 @@ namespace rhcodepi
             }
         }
 
-        void Update()
-        {
-
+        private void OnTriggerEnter2D(Collider2D coll) {
+            if(coll.CompareTag("IsGround"))
+            {
+                FindObjectOfType<UIManager>().SetGameOver();
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace rhcodepi
         [SerializeField] GameObject gameOverUI;
         [SerializeField] Text gameOverScoreTxt;
         [SerializeField] Text gameOverCoinTxt;
+        [SerializeField] GameObject forAndroid;
         int score;
         int coinCount;
         // Start is called before the first frame update
@@ -19,6 +20,12 @@ namespace rhcodepi
         {
             gameOverUI.SetActive(false);
             inGameUI.SetActive(true);
+
+            #if UNITY_EDITOR_WIN
+                forAndroid.SetActive(false);
+            #else
+                forAndroid.SetActive(true);
+            #endif
         }
 
         public void MainMenu()
@@ -55,6 +62,7 @@ namespace rhcodepi
             }
             CalculateHighScoreEachDifficult(score, coinCount);
             GetComponent<Score>()._isGameOver = true;
+            FindObjectOfType<PlayerControl>().GameOver();
             gameOverUI.SetActive(true);
         }
         public void CalculateHighScoreEachDifficult(int score, int coinCount)

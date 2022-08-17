@@ -141,6 +141,11 @@ namespace rhcodepi
             }
         }
 
+        public void GameOver()
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
 
