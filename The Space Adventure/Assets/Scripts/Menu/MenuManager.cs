@@ -9,8 +9,8 @@ namespace rhcodepi
 {
     public class MenuManager : MonoBehaviour
     {
-        [SerializeField] Sprite[] volumeSprites;
-        [SerializeField] Button volume;
+        [SerializeField] Sprite[] musicSprites;
+        [SerializeField] Button music;
         private void Start()
         {
             if (!SaveData.isDataOnPrefs())
@@ -38,21 +38,30 @@ namespace rhcodepi
             if (SaveData.GetMusic() == 1)
             {
                 SaveData.SetSaveMusic(0);
-                volume.image.sprite = volumeSprites[0];
+                Music.instance.SetMusic(false);
+                music.image.sprite = musicSprites[0];
             }
             else
             {
                 SaveData.SetSaveMusic(1);
-                volume.image.sprite = volumeSprites[1];
+                Music.instance.SetMusic(true);
+                music.image.sprite = musicSprites[1];
             }
         }
 
         public void MusicSetup()
         {
             if (SaveData.GetMusic() == 1)
-                volume.image.sprite = volumeSprites[1];
+            {
+                Music.instance.SetMusic(true);
+                music.image.sprite = musicSprites[1];
+            }
             else if (SaveData.GetMusic() == 0)
-                volume.image.sprite = volumeSprites[0];
+            {
+                Music.instance.SetMusic(false);
+                music.image.sprite = musicSprites[0];
+            }
+                
         }
 
     }
