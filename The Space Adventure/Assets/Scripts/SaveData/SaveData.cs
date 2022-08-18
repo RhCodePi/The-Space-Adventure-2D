@@ -5,12 +5,9 @@ namespace rhcodepi
 {
     public static class SaveData
     {
-        public enum Save
-        {
-            Settings,
-            Puan,
-            Coin,
-        }
+
+        public static string standard = "standard";
+        public static string challenge = "challenge";
         public static string easy = "easy";
         public static string normal = "normal";
         public static string hard = "hard";
@@ -121,12 +118,44 @@ namespace rhcodepi
         }
         #endregion
 
+        #region SaveStandard
+        public static void SetSaveStandard(int value)
+        {
+            PlayerPrefs.SetInt(standard, value);
+        }
 
+        public static int GetStandard()
+        {
+            return PlayerPrefs.GetInt(standard);
+        }
+
+        #endregion
+
+        #region SaveChallenge
+        public static void SetSaveChallenge(int value)
+        {
+            PlayerPrefs.SetInt(challenge, value);
+        }
+
+        public static int GetChallenge()
+        {
+            return PlayerPrefs.GetInt(challenge);
+        }
+
+
+        #endregion
         public static bool isDataOnPrefs()
         {
             if (PlayerPrefs.HasKey(easy) || PlayerPrefs.HasKey(normal) || PlayerPrefs.HasKey(hard))
                 return true;
             else
+                return false;
+        }
+        public static bool isModeOnPrefs()
+        {
+            if(PlayerPrefs.HasKey(standard) || PlayerPrefs.HasKey(challenge))
+                return true;
+            else 
                 return false;
         }
         public static bool isMusicOnPrefs()

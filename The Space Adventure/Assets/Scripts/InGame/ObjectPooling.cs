@@ -5,6 +5,8 @@ namespace rhcodepi
 {
     public class ObjectPooling : MonoBehaviour
     {
+        private delegate void SelectOne();
+        SelectOne nextPlatformLocation;
         [SerializeField] GameObject platformPref;
         [SerializeField] GameObject enemyPlatformPref;
         [SerializeField] GameObject playerPref;
@@ -16,19 +18,22 @@ namespace rhcodepi
         Vector2 platformPos;
         Vector2 playerPos;
         Vector2 enemyPlatPos;
+        bool direction = true;
+
         void Start()
         {
+            if(SaveData.GetStandard() == 1)
+                nextPlatformLocation = Standard;
+            if(SaveData.GetChallenge() == 1)
+                nextPlatformLocation = Challenge;
             GeneratePlatforms();
         }
 
-        // Update is called once per frame
+        
         void Update()
         {
-
             if (platforms[platformCount - 1].transform.position.y < Camera.main.transform.position.y + PlatformPath.instance.Height)
-            {
                 SetPlatform();
-            }
         }
 
         void SetPlatform()
@@ -42,14 +47,15 @@ namespace rhcodepi
                 platforms[i + (int)platformCount / 2].transform.position = platformPos;
 
 
-                if(platforms[i+(int)platformCount/2].gameObject.CompareTag("Platform"))
+                if (platforms[i + (int)platformCount / 2].gameObject.CompareTag("Platform"))
                 {
-                    platforms[i+(int)platformCount/2].GetComponent<Coin>().CoinDisable();
+                    platforms[i + (int)platformCount / 2].GetComponent<Coin>().CoinDisable();
                     float randomCoin = Random.Range(0.0f, 1.0f);
-                    if(randomCoin < 0.5f) platforms[i+(int)platformCount/2].GetComponent<Coin>().CoinEnable();
+                    if (randomCoin < 0.5f)
+                        platforms[i + (int)platformCount / 2].GetComponent<Coin>().CoinEnable();
                 }
 
-                NextPlatformLocation();
+                nextPlatformLocation();
             }
         }
 
@@ -61,7 +67,8 @@ namespace rhcodepi
             GameObject player = Instantiate(playerPref, playerPos, Quaternion.identity);
             GameObject firstPlatform = Instantiate(platformPref, platformPos, Quaternion.identity, container);
             platforms.Add(firstPlatform);
-            NextPlatformLocation();
+
+            nextPlatformLocation();
 
             for (int i = 1; i < platformCount - enemyPlatCount; i++)
             {
@@ -69,27 +76,39 @@ namespace rhcodepi
                 platforms.Add(platform);
                 platform.GetComponent<Platform>().IsMove = true;
                 if (i % 2 == 0)
-                {
                     platform.GetComponent<Coin>().CoinEnable();
-                }
-                NextPlatformLocation();
+
+                nextPlatformLocation();
             }
             GameObject enemyPlat = Instantiate(enemyPlatformPref, platformPos, Quaternion.identity, container);
             platforms.Add(enemyPlat);
-            NextPlatformLocation();
+
+            nextPlatformLocation();
         }
 
-        void NextPlatformLocation()
+        void Challenge()
         {
             platformPos.y += distance;
             float random = Random.Range(0.0f, 1.0f);
             if (random < 0.5f)
+                platformPos.x = PlatformPath.instance.Width / 2;
+            else
+                platformPos.x = -PlatformPath.instance.Width / 2;
+            
+        }
+        void Standard()
+        {
+            
+            platformPos.y += distance;
+            if (direction)
             {
                 platformPos.x = PlatformPath.instance.Width / 2;
+                direction = false;
             }
             else
             {
                 platformPos.x = -PlatformPath.instance.Width / 2;
+                direction = true;
             }
         }
     }

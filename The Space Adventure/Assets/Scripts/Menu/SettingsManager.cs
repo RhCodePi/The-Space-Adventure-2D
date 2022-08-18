@@ -9,6 +9,7 @@ namespace rhcodepi
     public class SettingsManager : MonoBehaviour
     {
         [SerializeField] Button easyBtn, normalBtn, hardBtn;
+        [SerializeField] Button standartBtn, challengeBtn;
 
         void Start()
         {
@@ -68,6 +69,28 @@ namespace rhcodepi
                 default:
                     break;
             }
+        }
+
+        public void SelectPlayMode(string playMode)
+        {
+            switch (playMode)
+            {
+                case "standard":
+                    SaveData.SetSaveStandard(1);
+                    SaveData.SetSaveChallenge(0);
+                    standartBtn.interactable = false;
+                    challengeBtn.interactable = true;
+                    break;
+                case "challenge":
+                    SaveData.SetSaveStandard(0);
+                    SaveData.SetSaveChallenge(1);
+                    standartBtn.interactable = true;
+                    challengeBtn.interactable = false;
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }

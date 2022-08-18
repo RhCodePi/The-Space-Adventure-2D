@@ -17,6 +17,8 @@ namespace rhcodepi
                 SaveData.SetSaveEasy(1);
             if (!SaveData.isMusicOnPrefs())
                 SaveData.SetSaveMusic(1);
+            if(!SaveData.isModeOnPrefs())
+                SaveData.SetSaveStandard(1);
             MusicSetup();
         }
 

@@ -9,7 +9,7 @@ namespace rhcodepi
     {
         public static Music instance;
         [SerializeField] AudioSource music;
-        void Start()
+        void Awake()
         {
             Singleton();
         }
@@ -19,9 +19,10 @@ namespace rhcodepi
             if(instance != null)
                 Destroy(gameObject);
             if(instance == null)
+            {
                 instance = this;
-            
-            DontDestroyOnLoad(instance);
+                DontDestroyOnLoad(instance);
+            }
         }
 
         public void SetMusic(bool isPlay)
