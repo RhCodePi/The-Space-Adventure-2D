@@ -44,7 +44,7 @@ namespace rhcodepi
         {
             FindObjectOfType<Sound>().SetGameOverSound();
             inGameUI.SetActive(false);
-            gameOverScoreTxt.text = GetComponent<Score>().gameOverScoreTxt.text; 
+            gameOverScoreTxt.text = GetComponent<Score>().gameOverScoreTxt.text;
             gameOverCoinTxt.text = GetComponent<Score>().gameOverCoinTxt.text;
 
             string[] subPuan = gameOverScoreTxt.text.Split(' ');
@@ -52,12 +52,12 @@ namespace rhcodepi
             int result = 0;
             foreach (var item in subPuan)
             {
-                if(int.TryParse(item, out result))
+                if (int.TryParse(item, out result))
                     score = int.Parse(item);
             }
             foreach (var item in subCoin)
             {
-                if(int.TryParse(item, out result))
+                if (int.TryParse(item, out result))
                     coinCount = int.Parse(item);
             }
             CalculateHighScoreEachDifficult(score, coinCount);
@@ -71,29 +71,29 @@ namespace rhcodepi
             {
                 int highScore = SaveData.GetSaveEasyPuan();
                 int highCoin = SaveData.GetSaveEasyCoin();
-                if(score > highScore)
+                if (score > highScore)
                     SaveData.SetSaveEasyPuan(score);
-                if(coinCount > highCoin)
+                if (coinCount > highCoin)
                     SaveData.SetSaveEasyCoin(coinCount);
             }
-            
+
             if (SaveData.GetSaveNormal() == 1)
             {
                 int highScore = SaveData.GetSaveNormalPuan();
                 int highCoin = SaveData.GetSaveNormalCoin();
-                if(score > highScore)
+                if (score > highScore)
                     SaveData.SetSaveNormalPuan(score);
-                if(coinCount > highCoin)
+                if (coinCount > highCoin)
                     SaveData.SetSaveNormalCoin(coinCount);
             }
-            
+
             if (SaveData.GetSaveHard() == 1)
             {
                 int highScore = SaveData.GetSaveHardPuan();
                 int highCoin = SaveData.GetSaveHardCoin();
-                if(score > highScore)
+                if (score > highScore)
                     SaveData.SetSaveHardPuan(score);
-                if(coinCount > highCoin)
+                if (coinCount > highCoin)
                     SaveData.SetSaveHardCoin(coinCount);
             }
         }

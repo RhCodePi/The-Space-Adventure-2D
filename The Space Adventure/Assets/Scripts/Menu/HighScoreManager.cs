@@ -8,17 +8,18 @@ namespace rhcodepi
 {
     public class HighScoreManager : MonoBehaviour
     {
-        [SerializeField] Text easyPuan, easyCoin, normalPuan, normalCoin, hardPuan, hardCoin;
+        [SerializeField] Text headTxt, easyPuan, easyCoin, normalPuan, normalCoin, hardPuan, hardCoin;
 
-        private void Start() {
-            easyPuan.text = $"Puan {SaveData.GetSaveEasyPuan()} ";
+        private void Start()
+        {
+            easyPuan.text = $"Puan {SaveData.GetSaveEasyPuan()}";
             easyCoin.text = $" X {SaveData.GetSaveEasyCoin()}";
 
-            normalPuan.text = $"Puan {SaveData.GetSaveNormalPuan()} ";
+            normalPuan.text = $"Puan {SaveData.GetSaveNormalPuan()}";
             normalCoin.text = $" X {SaveData.GetSaveNormalCoin()}";
 
-            hardPuan.text = $"Puan {SaveData.GetSaveHardPuan()} ";
-            hardCoin.text = $" X {SaveData.GetSaveHardCoin()}"; 
+            hardPuan.text = $"Puan {SaveData.GetSaveHardPuan()}";
+            hardCoin.text = $" X {SaveData.GetSaveHardCoin()}";
         }
 
         public void BackMenu()

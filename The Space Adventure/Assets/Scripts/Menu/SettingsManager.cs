@@ -31,8 +31,19 @@ namespace rhcodepi
                 normalBtn.interactable = true;
                 hardBtn.interactable = false;
             }
+
+            if (SaveData.GetStandard() == 1)
+            {
+                standartBtn.interactable = false;
+                challengeBtn.interactable = true;
+            }
+            if (SaveData.GetChallenge() == 1)
+            {
+                standartBtn.interactable = true;
+                challengeBtn.interactable = false;
+            }
         }
-        
+
         public void BackMenu()
         {
             SceneManager.LoadScene("Menu");
@@ -90,7 +101,6 @@ namespace rhcodepi
                 default:
                     break;
             }
-
         }
     }
 }

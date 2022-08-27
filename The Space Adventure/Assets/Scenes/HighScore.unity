@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e241809297d9d4daeade875e5cfae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headTxt: {fileID: 0}
   easyPuan: {fileID: 301917919}
   easyCoin: {fileID: 1193278023}
   normalPuan: {fileID: 1198235668}
@@ -506,7 +507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -127}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &373439141

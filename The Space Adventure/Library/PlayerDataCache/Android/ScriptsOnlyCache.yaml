@@ -28,8 +28,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -470,7 +468,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: e81ababeb7a242adcdc8481153bfe26f
+      Hash: b9cd0085806532b3065cff11d425da93
     assemblyName: Assembly-CSharp.dll
     namespaceName: rhcodepi
     className: SettingsManager
@@ -1002,4 +1000,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/HighScore.unity
   - Assets/Scenes/Settings.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/devo/Turkcell/Build/The-Space-Adventure-2D_V.0.1.apk
+  playerPath: C:/devo/Turkcell/Build/The-Space-Adventure-2D_V.0.2.apk
